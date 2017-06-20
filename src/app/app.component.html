@@ -1,3 +1,49 @@
-<h1>
-  {{title}}
-</h1>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Ayeka Sensors Geolocation Distribution</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+      
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="map">
+                                                      <!-- this creates a google map on the page with the given lat/lng from -->
+                            <!-- the component as the initial center of the map: -->
+                            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]=false [zoomControl] = false
+                            (mapClick)="mapClicked($event)"
+                            [zoomControl]="false"
+                            >
+                              <agm-marker  *ngFor = "let m of markers; let i = index" 
+                                      (markerClick)="clickedMarker(m,i)"
+                                        [latitude] = "m.lat"
+                                        [longitude] = "m.lng"
+                                      
+                              >
+                          
+                              <agm-info-window [isOpen]="m.isOpen">
+                                  <strong>{{m.name + ' - ' + m.temp}} &deg;</strong>
+                              </agm-info-window>  
+                          </agm-marker>
+                        </agm-map>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
