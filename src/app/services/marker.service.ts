@@ -21,7 +21,7 @@ export class MarkerService extends Init{
     }
 
     // validity check, for simplicity reasons - if a coordinate is not valid - it's removed from the list
-    private checkValidity(markers){
+    private checkValidity(markers) {
             var reg = new RegExp("^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}");
             
             for (var i=0;i<markers.length; i++){
